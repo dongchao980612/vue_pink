@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue基础</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+        <h2>{{ school.name }} {{ school.age }}</h2>
+        <ul>
+            <li>{{ city[0] }}</li>
+            <li>{{ city[1] }}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                message: 'Hello Vue!',
+                school:{
+                    name: '张三',
+                    tele: '13812345678',
+                },
+                city:['北京','上海','广州']
+            } 
+        }) 
+    </script>
+</body>
+</html>

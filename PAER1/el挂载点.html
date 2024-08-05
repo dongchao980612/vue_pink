@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue基础</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    {{ message }}
+    <div id="app" class="app">
+        div{{ message }}
+        <br>
+        <span>div->span{{ message }}</span>
+    </div>
+    <p id="app">p的{{ message }}</p>
+
+    <script>
+        var app = new Vue({ 
+            // el: '#app', 
+            // el: '.app', 
+            el:"#app",
+            data: { 
+                message: '黑马程序员' 
+            } ,
+        }) 
+    </script>
+</body>
+</html>
