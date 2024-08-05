@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>本地应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <input type="button" value="事件绑定" v-on:click="fun1">
+       <input type="button" value="事件绑定" @click="fun2">
+       <input type="button" value="事件绑定" @dblclick="fun2">
+       <p>{{ message }}</p>
+    </div>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                message: '' 
+            } ,
+
+            methods: { 
+                fun1: function() { 
+                    this.message = 'click fun1'; 
+                },
+                fun2: function() { 
+                    alert('click fun2'); 
+                } 
+            } 
+
+        }) 
+    </script>
+</body>
+</html>

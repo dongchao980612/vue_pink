@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>本地应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <h2 v-text="message+'123'">深圳</h2>
+       <h2 v-text="info+'!'">深圳</h2>
+       <h2>黑马{{ message+'!' }}深圳</h2>
+    </div>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                message: '黑马程序员!!!' ,
+
+                info: '前端开发框架' 
+            } 
+        }) 
+    </script>
+</body>
+</html>

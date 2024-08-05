@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>本地应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <img v-show="true" width="100" height="100" src="https://v2.cn.vuejs.org/images/logo.svg">
+
+        <button v-on:click="changeIsShow">显示/隐藏</button>
+         <img v-show="isShow" width="100" height="100" src="https://v2.cn.vuejs.org/images/logo.svg">
+
+         <button v-on:click="addAge">增加年龄</button>
+         <img v-show="age>=16" width="100" height="100" src="https://v2.cn.vuejs.org/images/logo.svg">
+    </div>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                isShow: false, 
+                age:15
+            } ,
+            methods:{
+                changeIsShow:function(){
+                    this.isShow=!this.isShow;
+                },
+                addAge:function(){
+                    this.age++;
+                }
+            }
+
+        }) 
+    </script>
+</body>
+</html>

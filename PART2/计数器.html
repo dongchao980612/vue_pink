@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>本地应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style >
+        .counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            color: #ff0000; /* 设置按钮内的字符颜色为红色 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+            transition: background-color 0.3s ease;
+          }
+          
+          .button:hover {
+            background-color: #ddd;
+          }
+          
+          .button:active {
+            background-color: #bbb;
+          }
+          
+          .number {
+            margin: 0 10px; /* 增加左右外边距以留出更多空间 */
+            font-size: 16px;
+          }
+          
+          .minus,
+          .plus {
+            color: #ff0000; /* 保持减号和加号的颜色为红色 */
+          }
+          
+          .minus {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* 加深减号按钮的阴影 */
+          }
+          
+          .plus {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* 加深加号按钮的阴影 */
+          }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div class="counter">
+            <button class="button minus"  v-on:click="count_minus">-</button>
+            <span class="number" v-text="count"></span>
+            <button class="button minus" v-on:click="count_plus">+</button>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                count: 1
+            } ,
+
+            methods: { 
+                count_plus: function() { 
+                    if (this.count < 10) {  
+                        this.count++; 
+                    } else { 
+                        alert("不能再加了！"); 
+                    } 
+                }, 
+                count_minus: function() { 
+                    if(this.count > 0) { 
+                        this.count--; 
+                    } else { 
+                        alert("不能再减了！");  
+                    } 
+                }
+            }
+        }) 
+    </script>
+</body>
+</html>

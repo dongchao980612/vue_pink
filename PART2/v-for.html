@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>本地应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in arr" v-bind:title="item">
+                {{index}} ---- {{item}}
+            </li>
+        </ul>
+
+        <input type="button" value="添加" @click="add">
+        <input type="button" value="删除" @click="remove">
+
+        <h2 v-for="(item,index) in vagetables" v-bind:title="item.name">{{item.name}}</h2>
+
+    <script>
+        var app = new Vue({ 
+            el: '#app', 
+
+            data: { 
+                   arr:["北京","上海","广州","深圳"],
+                   vagetables:[
+                        {name:"苹果"},
+                        {name:"香蕉"}
+                   ]
+            },
+
+            methods: {
+                add: function() {
+                    this.vagetables.push({name: "西瓜"});
+                },
+                remove: function() {
+                    this.vagetables.shift();
+                }
+            },
+            
+        }) 
+    </script>
+</body>
+</html>

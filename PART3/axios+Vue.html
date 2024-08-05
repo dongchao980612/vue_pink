@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网络应用</title>
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <!-- 引入axios -->  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="获取笑话" @click="getJoke">
+        <p> {{ joke }}</p>
+    </div>
+
+
+        
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                joke: ''
+            },
+            methods: {
+                getJoke: function() {
+                        // 发送axios请求
+                        var that=this
+                        axios.get("https://api-vue-base.itheima.net/api/joke/list?num=1")
+                        .then(function(response){
+                            that.joke=response.data.data[0];
+                        },function (err) { 
+                            console.log("请求失败",err.message);
+                        })
+                    }
+            }
+        });
+
+    </script>
+</body>
+</html>

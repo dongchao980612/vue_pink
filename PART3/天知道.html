@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>网络应用</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+   
+    <!-- 引入Vue.js -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- 引入axios -->  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <div class="search_form">
+            <div class="search_icon"><h1>天知道</h1></div>
+            <div class="from_froup">
+                <input type="text"  class="input_text" placeholder="请输入城市名称"  @keyup.enter="searchWeather" v-model="city" />
+                <button class="input_sub">查询</button>
+            </div>
+        </div>
+
+        <div class="hotkey">
+            <a href="#" v-on:click="changeCity('北京')">北京</a>
+            <a href="#" v-on:click="changeCity('上海')">上海</a>
+            <a href="#" v-on:click="changeCity('广州')">广州</a>
+            <a href="#" v-on:click="changeCity('深圳')">深圳</a>
+        </div>
+
+
+        <ul class="weather-list">
+            <li v-for="item in weatherList">   
+                <div class="info_type"><span class = "iconfont">{{item.type}}</span></div>
+                <div class="info_temp"><span class = "iconfont">
+                    <b>{{item.low}}</b>~<b>{{item.high}}</b>
+                </div>
+                <div class="info_date"><span>{{item.date}}</span></div>
+            </li>
+        </ul>
+    </div>   
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+/* 基本重置样式 */
+body,
+h1,
+ul,
+li,
+a,
+button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 容器样式 */
+#app {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 搜索表单样式 */
+.search_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search_icon h1 {
+    color: #333;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.from_froup {
+    display: flex;
+    align-items: center;
+}
+
+.input_text {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    /* 占据剩余空间 */
+    margin-right: 10px;
+}
+
+.input_sub {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input_sub:hover {
+    background-color: #0056b3;
+}
+
+/* 热门城市样式 */
+.hotkey {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.hotkey a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
+
+.hotkey a:hover {
+    background-color: #d3d9df;
+}
+
+/* 天气列表样式 */
+.weather-list {
+    list-style: none;
+    padding: 0;
+}
+
+.weather-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.info_type,
+.info_temp,
+.info_date {
+    flex: 1;
+    /* 平均分配空间 */
+    text-align: center;
+}
+
+.info_type span,
+.info_temp span,
+.info_date span {
+    font-size: 16px;
+}
+
+.info_temp b {
+    font-size: 20px;
+}
+
+/* 自定义图标样式（假设使用iconfont） */
+.iconfont {
+    margin-right: 5px;
+    font-size: 20px;
+    vertical-align: middle;
+}
