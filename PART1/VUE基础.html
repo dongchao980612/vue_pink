@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Vue基础</title>
+    <title>Vue基础</title>
     <!-- 引入Vue.js -->
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
     <div id="app">
         {{ message }}
     </div>
 
     <script>
-        var app = new Vue({ 
-            el: '#app', 
+        var app = new Vue({
+            el: '#app',
 
-            data: { 
-                message: 'Hello Vue!' 
-            } 
-        }) 
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
     </script>
 </body>
+
 </html>
