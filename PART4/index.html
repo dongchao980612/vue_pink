@@ -30,7 +30,7 @@
                     <ul class="song_list">
                         <li v-for="item in musicList">
                             <a href="javascript:;" v-on:click="playMusic(item.title)"></a><b>{{item.title}}
-                                {{item.name}}</b><span><i></i></span>
+                                {{item.name}}</b><span v-on:click="playMv(item.title)"><i></i></span>
                         </li>
                     </ul>
                     <img src="images/line.png" class="switch_btn" alt="">
@@ -42,7 +42,7 @@
                     <img src="images/player_bar.png" class="play_bar" />
                     <!-- 黑胶碟片 -->
                     <img src="images/disc.png" class="disc autoRotate" />
-                    <img :src="musicCover" class="cover autoRotate" />
+                    <img v-bind:src="musicCover" class="cover autoRotate" />
                 </div>
 
                 <!-- 评论容器 -->
@@ -51,7 +51,7 @@
                     <div class='comment_list'>
                         <dl>
                             <dt>
-                                <img alt="" />
+                                <img alt="昵称" />
                             </dt>
                             <dd class="name">昵称</dd>
                             <dd class="detail">
@@ -64,14 +64,15 @@
             </div>
 
             <div class="audio_con">
-                <audio ref='audio' v-bind:src="musicUrl" controls autoplay loop class="myaudio"></audio>
+                <audio ref='audio' v-bind:src="musicUrl" @play="play" @pause="pause" controls autoplay loop
+                    class="myaudio"></audio>
             </div>
 
 
-            <!-- <div class="video_con" style="display: none;" v-show="isShow">
+            <div class="video_con" style="display: none;" v-show="isShowMv">
                 <video controls="controls" :src="mvUrl"></video>
                 <div class="mask" @click="hide"></div>
-            </div>  -->
+            </div>
 
         </div>
 
