@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>Notepad</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            /* 浅灰色背景 */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        #todoapp {
+            width: 600px;
+            margin: 100px auto;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .header {
+            position: relative;
+            background: #eaf6ff;
+            /* 浅蓝色背景 */
+            padding: 20px;
+        }
+
+        .header h1 {
+            margin-top: 0;
+            color: #0077be;
+            /* 深一点的蓝色 */
+        }
+
+        input {
+            width: 100%;
+            font-size: 24px;
+            line-height: 1.4em;
+            border: none;
+            outline: none;
+            padding: 6px;
+            box-sizing: border-box;
+            background: #eaf6ff;
+            /* 浅蓝色背景 */
+            color: #333;
+        }
+
+        .main ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .todo-list li {
+            position: relative;
+            padding: 12px 12px 12px 15px;
+            border-bottom: 1px solid #eaf6ff;
+            /* 分隔线 */
+        }
+
+        .todo-list li:last-child {
+            border-bottom: none;
+        }
+
+        .todo span {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+        }
+
+        .todo label {
+            display: inline-block;
+            margin-left: 10px;
+            flex-grow: 1;
+        }
+
+        .destory {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .destory:hover {
+            color: #dd5555;
+            /* 鼠标悬停时的红色 */
+        }
+
+        .footer {
+            height: 50px;
+            line-height: 50px;
+            background: #eaf6ff;
+            /* 浅蓝色背景 */
+            padding: 0 20px;
+            color: #999;
+        }
+
+        .todo-count strong {
+            font-weight: bold;
+            color: #0077be;
+            /* 深一点的蓝色 */
+        }
+
+        .clear-completed {
+            float: right;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+            line-height: 50px;
+            /* 设置与 .footer 相同的行高 */
+            padding: 0 15px;
+            /* 添加一些内边距 */
+        }
+
+        .clear-completed:hover {
+            color: #dd5555;
+            /* 鼠标悬停时的红色 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主体区域 -->
+    <div id="todoapp">
+        <!-- 输入框 -->
+        <div class="header">
+            <h1>TODO</h1>
+            <input v-model="inputValue" autofocus="autofocus" autocomplete="off" placeholder="请输入任务"
+                v-on:keyup.enter="addItem">
+        </div>
+
+        <!-- 列表区域 -->
+        <div class="main">
+            <ul class="todo-list">
+                <li v-for="(item,index) in list" class="todo">
+                    <div>
+                        <span>{{index+1}}</span>
+
+                        <label>{{item}}</label>
+
+                        <button class="destory" v-on:click="removeItem(index)">X</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">
+            <span class="todo-count" v-if="list.length">一共有<strong>{{list.length}}</strong> 项待办任务</span>
+            <button class="clear-completed" v-on:click="destoryAll" v-show="list.length">清空</button>
+        </div>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#todoapp',
+            data: {
+                inputValue: "",
+                list: []
+            },
+            created: function () {
+                // 初始化时从 localStorage 读取数据
+                this.loadFromLocalStorage();
+            },
+            methods: {
+                addItem: function () {
+                    if (this.inputValue.trim() === "") {
+                        alert("输入不能为空");
+                        return;
+                    }
+                    this.list.push(this.inputValue);
+                    this.inputValue = "";
+                    this.updateLocalStorage();
+                },
+                removeItem: function (index) {
+                    this.list.splice(index, 1);
+                    this.updateLocalStorage();
+                },
+                destoryAll: function () {
+                    this.list = [];
+                    this.updateLocalStorage();
+                },
+                loadFromLocalStorage: function () {
+                    // 从 localStorage 加载数据
+                    var storedList = JSON.parse(localStorage.getItem('todoList'));
+                    if (storedList) {
+                        this.list = storedList;
+                    }
+                },
+                updateLocalStorage: function () {
+                    // 更新 localStorage
+                    localStorage.setItem('todoList', JSON.stringify(this.list));
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
